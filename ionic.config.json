@@ -1,5 +1,7 @@
 {
   "name": "authOidcApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
