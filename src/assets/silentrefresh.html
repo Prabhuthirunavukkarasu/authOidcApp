@@ -14,9 +14,8 @@
             result_authorize[parts[0]] = parts[1];
             return result_authorize;
         }, {});
-
+        localStorage.setItem("result_authorize", result_authorize);
         console.info("result_authorize: " + JSON.stringify(result_authorize));
-
         var authConf = null;
         try {
             var authConfSerialized = localStorage.getItem(location.host + ':environment.authentication');

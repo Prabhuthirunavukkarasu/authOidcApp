@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <ion-icon name="menu" menuToggle></ion-icon>&nbsp;&nbsp; Profile
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h2 *ngIf="isAuthenticated()" text-center>User:</h2>
+  <ul *ngIf="isAuthenticated()">
+    <li *ngFor="let item of profile">
+      {{ item}}
+    </li>
+  </ul>
+  <h2 *ngIf="isAuthenticated()" text-center>is logged in!</h2>
+  <h2 *ngIf="!isAuthenticated()" text-center>User is not logged in!</h2>
+
+</ion-content>

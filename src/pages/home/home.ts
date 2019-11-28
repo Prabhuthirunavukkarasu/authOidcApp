@@ -4,11 +4,11 @@ import { NavController, AlertController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { Network } from '@ionic-native/network';
 
-import { SecondPage } from './../second/second';
 import { AuthServiceProvider } from './../../providers/auth-service/auth-service';
 import { TimeoutServiceProvider } from './../../providers/timeout-service/timeout-service';
 import { environment } from './../../providers/auth-service/environment';
 import { GlobalProvider } from "./../../providers/global/global"
+import { DoorsPage } from '../doors/doors';
 
 @Component({
   selector: 'page-home',
@@ -29,7 +29,7 @@ export class HomePage implements OnInit, AfterViewInit {
   ngOnInit() {
     this.globals.auth.subscribe(authenticated => {
       for (let key in authenticated.user.profile) {
-        this.profile.push( key + ' : ' +  authenticated.user.profile[key] );
+        this.profile.push(key + ' : ' + authenticated.user.profile[key]);
       }
 
       if (authenticated.isAuthenticated) {
@@ -57,7 +57,7 @@ export class HomePage implements OnInit, AfterViewInit {
   }
 
   nextPage() {
-    this.navCtrl.push(SecondPage).catch(err => {
+    this.navCtrl.push(DoorsPage).catch(err => {
       let alert = this.alertCtrl.create({
         title: 'No entry!',
         subTitle: 'You shall not pass',
@@ -70,5 +70,4 @@ export class HomePage implements OnInit, AfterViewInit {
   isAuthenticated() {
     return this.globals.isAuthenticated;
   }
-
 }

@@ -9,37 +9,47 @@ import { HomePage } from '../pages/home/home';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { TimeoutServiceProvider } from '../providers/timeout-service/timeout-service';
 import { GlobalProvider } from '../providers/global/global';
-import { SecondPage } from './../pages/second/second';
 import { Network } from '@ionic-native/network';
 import { HttpModule } from '@angular/http';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+import { DoorsPage } from '../pages/doors/doors';
+import { ProfilePage } from '../pages/profile/profile';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    SecondPage
+    DoorsPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      backButtonText: '',
+      iconMode: 'ios',
+      modalEnter: 'modal-slide-in',
+      modalLeave: 'modal-slide-out',
+      tabsPlacement: 'bottom',
+      pageTransition: 'ios-transition'
+    }),
     NgIdleKeepaliveModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    SecondPage
+    DoorsPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthServiceProvider,
     TimeoutServiceProvider,
     GlobalProvider,
     Network
   ]
 })
-export class AppModule {}
+export class AppModule { }
